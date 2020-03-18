@@ -1,4 +1,4 @@
-package com.spring.tutorial.controller;
+package com.spring.tutorial.controller.versao;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +15,10 @@ public class VersaoController {
 	@Value("${application.versionAPI}")
 	private String versao;
 	
-	@Value("${paginacao.paginacao}")
+	@Value("${paginacao}")
 	private int paginacao;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public ResponseEntity<String> recuperaVersao() {
 		return ResponseEntity.ok().body("Version API: " + versao);
 	}
