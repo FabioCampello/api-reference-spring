@@ -1,4 +1,4 @@
-package com.spring.tutorial.versao.controller;
+package com.spring.tutorial.versao;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

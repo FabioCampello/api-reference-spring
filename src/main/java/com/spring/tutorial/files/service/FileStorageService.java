@@ -1,4 +1,4 @@
-package com.spring.tutorial.files;
+package com.spring.tutorial.files.service;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,7 +25,6 @@ public class FileStorageService {
 
         try {
             Files.createDirectories(this.fileStorageLocation);
-            System.out.println("Aqui!");
         } catch (Exception ex) {
             throw new ServicosOnlineApiException("Não foi possível criar o diretório em que os arquivos enviados serão armazenados.", ex);
         }
@@ -41,8 +40,7 @@ public class FileStorageService {
 				throw new ServicosOnlineApiException("Desculpe! Nome do arquivo contém sequência de caminho inválida: " + fileName);
 			}
 
-			// Copiar arquivo para o local de destino (Substituindo arquivo existente com o
-			// mesmo nome)
+			// Copiar arquivo para o local de destino (Substituindo arquivo existente com o mesmo nome)
 			Path targetLocation = this.fileStorageLocation.resolve(fileName);
 			Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 

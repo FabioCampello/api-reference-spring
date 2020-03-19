@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.tutorial.commons.exception.ServicosOnlineApiException;
 import com.spring.tutorial.commons.log.LogUtil;
-import com.spring.tutorial.files.FileStorageService;
+import com.spring.tutorial.files.service.FileStorageService;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -30,8 +30,7 @@ public class FileController {
 	@PostMapping("/uploadFile")
 	public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
 		try {
-			String fileName = fileStorageService.storeFile(file);
-			return new ResponseEntity<>("Arquivo, " + fileName + ", gravado!", HttpStatus.OK);
+			return new ResponseEntity<>("Arquivo, " + fileStorageService.storeFile(file) + ", gravado!", HttpStatus.OK);
 		} catch(ServicosOnlineApiException e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		} catch(Exception e) {
