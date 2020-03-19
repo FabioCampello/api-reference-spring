@@ -31,6 +31,11 @@ public class FileStorageService {
     }
 
 	public String storeFile(MultipartFile file) {
+		
+		if(file.isEmpty()) {
+			throw new ServicosOnlineApiException("Selecione um arquivo.");
+		} 
+		
 		// Normalize file name
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
